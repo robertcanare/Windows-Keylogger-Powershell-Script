@@ -1,1 +1,1 @@
-PowerShell.exe -windowstyle hidden .\key.ps1
+PowerShell.exe -windowstyle hidden .\keys.ps1
